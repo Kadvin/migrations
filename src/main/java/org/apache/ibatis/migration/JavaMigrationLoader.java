@@ -26,7 +26,6 @@ public class JavaMigrationLoader implements MigrationLoader {
     this.packageNames = packageNames;
   }
 
-  @Override
   public List<Change> getMigrations() {
     List<Change> migrations = new ArrayList<Change>();
     ResolverUtil<MigrationScript> resolver = getResolver(MigrationScript.class);
@@ -54,13 +53,11 @@ public class JavaMigrationLoader implements MigrationLoader {
     return change;
   }
 
-  @Override
   public Reader getScriptReader(Change change, boolean undo) {
     ResolverUtil<MigrationScript> resolver = getResolver(MigrationScript.class);
     final String className = change.getFilename();
     for (String pkg : packageNames) {
       resolver.find(new Test() {
-        @Override
         public boolean matches(Class<?> type) {
           return type != null && MigrationScript.class.isAssignableFrom(type) && type.getName().equals(className);
         }
@@ -81,7 +78,6 @@ public class JavaMigrationLoader implements MigrationLoader {
     return reader;
   }
 
-  @Override
   public Reader getBootstrapReader() {
     ResolverUtil<BootstrapScript> resolver = getResolver(BootstrapScript.class);
     resolver.findImplementations(BootstrapScript.class, packageNames);

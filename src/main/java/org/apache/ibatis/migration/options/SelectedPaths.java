@@ -5,17 +5,18 @@ import java.io.File;
 import static org.apache.ibatis.migration.utils.Util.file;
 
 public class SelectedPaths {
-  private File basePath = new File("./");
-  private File envPath;
-  private File scriptPath;
-  private File driverPath;
+    private File basePath = new File("./");
+    private File envPath;
+    private File scriptPath;
+    private File driverPath;
+    private File jarsPath;
 
-  public File getBasePath() {
-    return basePath;
-  }
+    public File getBasePath() {
+        return basePath;
+    }
 
-  public File getEnvPath() {
-    return envPath == null ? file(basePath, "./environments") : envPath;
+    public File getEnvPath() {
+        return envPath == null ? file(basePath, "./environments") : envPath;
   }
 
   public File getScriptPath() {
@@ -26,7 +27,11 @@ public class SelectedPaths {
     return driverPath == null ? file(basePath, "./drivers") : driverPath;
   }
 
-  public void setBasePath(File aBasePath) {
+    public File getJarsPath() {
+        return jarsPath == null ? file(basePath, "../../repository") : jarsPath;
+    }
+
+    public void setBasePath(File aBasePath) {
     basePath = aBasePath;
   }
 
@@ -41,4 +46,8 @@ public class SelectedPaths {
   public void setDriverPath(File aDriverPath) {
     driverPath = aDriverPath;
   }
+
+    public void setJarsPath(File jarsPath) {
+        this.jarsPath = jarsPath;
+    }
 }

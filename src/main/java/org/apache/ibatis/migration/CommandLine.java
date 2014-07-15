@@ -95,8 +95,9 @@ public class CommandLine {
 
   private void printUsage() {
     console.printf(
-        "%nUsage: migrate command [parameter] [--path=<directory>] [--env=<environment>] [--template=<path to custom template>]%n%n");
+        "%nUsage: migrate command [parameter] [--path=<directory>] [--jars=<directory>] [--env=<environment>] [--template=<path to custom template>]%n%n");
     console.printf("--path=<directory>   Path to repository.  Default current working directory.%n");
+    console.printf("--jars=<directory>   Path to directory contains service jars.  default is $path/../../repository .%n");
     console.printf("--env=<environment>  Environment to configure. Default environment is 'development'.%n");
     console.printf("--template=<template>  Path to custom template for creating new sql scripts.%n");
     console.printf("--force              Forces script to continue even if SQL errors are encountered.%n");

@@ -5,6 +5,7 @@ public enum Options {
   ENVPATH,
   SCRIPTPATH,
   DRIVERPATH,
+  JARS,
   ENV,
   FORCE,
   TRACE,

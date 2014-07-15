@@ -14,9 +14,9 @@ import org.apache.ibatis.migration.utils.Util;
 public class FileMigrationLoader implements MigrationLoader {
   private final File scriptsDir;
 
-  private final String charset;
+  protected final String charset;
 
-  private final Properties properties;
+  protected final Properties properties;
 
   public FileMigrationLoader(File scriptsDir, String charset, Properties properties) {
     super();
@@ -25,7 +25,6 @@ public class FileMigrationLoader implements MigrationLoader {
     this.properties = properties;
   }
 
-  @Override
   public List<Change> getMigrations() {
     List<Change> migrations = new ArrayList<Change>();
     if (scriptsDir.isDirectory()) {
@@ -64,7 +63,6 @@ public class FileMigrationLoader implements MigrationLoader {
     }
   }
 
-  @Override
   public Reader getScriptReader(Change change, boolean undo) {
     try {
       return new MigrationReader(Util.file(scriptsDir, change.getFilename()), charset, undo, properties);
@@ -73,7 +71,6 @@ public class FileMigrationLoader implements MigrationLoader {
     }
   }
 
-  @Override
   public Reader getBootstrapReader() {
     try {
       File bootstrap = Util.file(scriptsDir, "bootstrap.sql");

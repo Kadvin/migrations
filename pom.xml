@@ -24,15 +24,23 @@
   </parent>
 
   <artifactId>mybatis-migrations</artifactId>
-  <version>3.2.1-SNAPSHOT</version>
+  <version>4.1.0-SNAPSHOT</version>
 
   <name>MyBatis Migrations</name>
   <url>http://www.mybatis.org/migrations/</url>
+  <description>
+      This is a separated version from mybatis-migrations
+      in order to support scan db/migrate/*.sql from extended jars of ItsNow platform
+  </description>
 
   <contributors>
     <contributor>
       <name>Riccardo Cossu</name>
       <email>riccardo.cossu@gmail.com</email>
+    </contributor>
+    <contributor>
+      <name>Kadvin</name>
+      <email>kadvin@gmail.com</email>
     </contributor>
   </contributors>
 
@@ -66,7 +74,7 @@
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
-      <version>3.2.4</version>
+      <version>3.2.7</version>
     </dependency>
     <dependency>
       <groupId>org.hamcrest</groupId>
@@ -175,4 +183,42 @@
     </plugins>
   </build>
 
+    <profiles>
+        <profile>
+            <id>dnt</id>
+            <repositories>
+                <repository>
+                    <id>dnt-releases</id>
+                    <url>http://nexus.dnt.com.cn/nexus/content/groups/public</url>
+                </repository>
+
+                <repository>
+                    <id>dnt-snapshots</id>
+                    <url>http://nexus.dnt.com.cn/nexus/content/groups/public-snapshots/</url>
+                </repository>
+
+            </repositories>
+
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>dnt-releases</id>
+                    <url>http://nexus.dnt.com.cn/nexus/content/groups/public</url>
+                </pluginRepository>
+            </pluginRepositories>
+
+            <distributionManagement>
+                <repository>
+                    <id>dnt-releases</id>
+                    <name>Nexus Release Repository</name>
+                    <url>http://nexus.dnt.com.cn/nexus/content/repositories/releases</url>
+                </repository>
+                <snapshotRepository>
+                    <id>dnt-snapshots</id>
+                    <name>Nexus Snapshot Repository</name>
+                    <url>http://nexus.dnt.com.cn/nexus/content/repositories/snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+
+    </profiles>
 </project>

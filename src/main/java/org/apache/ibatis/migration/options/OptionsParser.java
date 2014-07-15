@@ -51,6 +51,9 @@ public enum OptionsParser {
         case DRIVERPATH:
           options.getPaths().setDriverPath(new File(argParts[1]));
           break;
+        case JARS:
+          options.getPaths().setJarsPath(new File(argParts[1]));
+          break;
         case ENV:
           options.setEnvironment(argParts[1]);
           break;
